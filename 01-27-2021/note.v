@@ -77,7 +77,20 @@ Compute peek s1 : Maybe nat.
 Definition compStack
            (c : MaybeStackpair)
            (f : stackpair -> MaybeStackpair) : MaybeStackpair :=
-  
+  match c with
+  | Nothing _ => Nothing stackpair
+  | Just _ (h,st) => f (h,st)
+  end.
+
+Definition auxPushPop (sp : stackpair) : MaybeStackpair :=
+  match sp with
+  | (h, st) => Just stackpair (0,(Push 2 st))
+  end.
+
+Definition pushPop : MaybeStackpair :=
+  compStack (pop s1) auxPushPop.
+
+Compute pushPop.
 
 (* pop s1 = Just (h,s1') : MaybeStackpair
  * Push 2 : Stack -> Stack
