@@ -10,15 +10,19 @@ Module Multiplication.
     | suc m' => suc (add m' n)
     end.
   
-  (*
-   *  mult (suc (suc (suc m))) n 
-   * = add n (mult (suc (suc m)) n)
-   * = add n (add n (mult (suc m) n))
-   * = add n (add n (add n m))
+  (* m = (suc (suc (suc m'))) 
+   * n = (suc (suc n'))
+   * 
+   * mult m n
+   * = mult (suc (suc (suc m'))) n 
+   * = add n (m'ult (suc (suc m')) n)
+   * = add n (add n (m'ult (suc m') n))
+   * = add n (add n (add n m'))         n + n + n + m' 
    *
-   * mult (suc (suc n)) m
-   * = add m (mult (suc n) m)
-   * = add m (add m n)
+   * mult n m
+   * mult (suc (suc n')) m
+   * = add m (mult (suc n') m)
+   * = add m (add m n')                 m + m + n' 
    *) 
 
   Fixpoint mult (m n : nat) : nat :=
