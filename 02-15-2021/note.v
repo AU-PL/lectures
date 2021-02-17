@@ -47,6 +47,11 @@ Fixpoint append {a : Type} (l1 l2 : list a) : list a :=
   end.
 
 Definition id {a : Type} (x : a) : a := x.
+Definition comp {a b c : Type} (f : a -> b) (g : b -> c) : a -> c :=
+  fun (x : a) => g (f x).
+
+Compute (id comp).
+Compute (id list).
 
 (* Not tail recursive  *)
 Fixpoint slow_reverse (l : list nat) : list nat :=
