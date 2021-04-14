@@ -6,28 +6,27 @@ Module IffyLang.
   | If (b : Exp) (b1 : Exp) (b2 : Exp)
   | And (b1 : Exp) (b2 : Exp).
 
-  Definition isVal (b : Exp) : Prop :=
-    match b with
-    | T => True
-    | F => True
-    | And _ _ => False
-    | If _ _ _ => False
-    end. 
+   Inductive isVal : Exp -> Prop :=    
+   | valT : isVal T
+   | valF : isVal F.
 
-  Fixpoint  eval (b : Exp) : Exp :=
+  Fixpoint  eval (b : Exp) : exists v:Exp, isVal v :=
     match b with
-    | T => T
-    | F => F
+    | T => ex_intro isVal T valT
+    | F => ex_intro isVal F valF
     | And b1 b2 =>
       match eval b1 with
-      | F => F
-      | _ => eval b2
+      | ex_intro _ F valF => ex_intro isVal F valF
+      | ex_intro _ F valT => _
+      | ex_intro _ T _ => eval b2
+      | ex_intro _ (And b1' b2') _ => ex_intro isVal F valF
+      | ex_intro _ (If b1' b2' b3') _ => ex_intro isVal F valF
       end
     | If b' b1 b2 =>
       match eval b' with
-      | T => eval b1
-      | F => eval b2
-      | _ => F
+      | ex_intro _ T _ => eval b1
+      | ex_intro _ F _ => eval b2
+      | _ => ex_intro isVal F valF
       end
     end.
 
