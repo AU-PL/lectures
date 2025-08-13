@@ -1,0 +1,1 @@
+All homework will be stored in this directory.

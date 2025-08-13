@@ -1,8 +1,0 @@
-lib: [
-  "_build/install/default/lib/lectex/META"
-  "_build/install/default/lib/lectex/dune-package"
-  "_build/install/default/lib/lectex/opam"
-]
-bin: [
-  "_build/install/default/bin/lectex"
-]
