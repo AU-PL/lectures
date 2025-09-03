@@ -1,0 +1,6 @@
+# dune init proj hwk2
+# OCAMLPARAM: unset
+# Shared cache: enabled-except-user-rules
+# Shared cache location: /Users/heades/.cache/dune/db
+# Workspace root: /Users/heades/work/teaching/PL/hwk/Fall/2025/2/student/hwk2
+# Auto-detected concurrency: 12
