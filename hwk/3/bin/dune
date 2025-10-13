@@ -1,0 +1,4 @@
+(executable
+ (public_name hwk3)
+ (name main)
+ (libraries hwk3))

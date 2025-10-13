@@ -1,0 +1,4 @@
+Homework 3
+---
+
+To build, use `dune build` inside of the `hwk3` folder (directory). To run the solution use `dune exec hwk3`. 
